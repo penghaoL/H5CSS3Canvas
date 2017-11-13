@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3d立方体</title>
+	<script src='jquery-1.12.4.min.js'></script>
+	<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+		li{
+			list-style: none;
+			width: 100px;
+			height: 100px;
+			position: relative;
+			float: left;
+			top:0;
+			left:0;
+			border:1px solid #fff;
+			box-sizing:border-box;
+			/*transition: all 0.5s;*/
+		}
+		.box{
+			width: 300px;
+			height: 300px;
+			margin:100px auto 0;
+			position: relative;
+			transform-style:preserve-3d;
+			animation:run 6s linear infinite alternate;
+		}
+		.box div{
+			width: 300px;
+			height: 300px;
+			position: absolute;
+			top:0;
+			left:0;
+			transform-style:preserve-3d;
+			opacity: 0.6;
+		}
+		.front{
+			transform: translateZ(150px);
+		}
+		.behind{
+			transform: translateZ(-150px);
+		}
+		.up{
+			transform: rotateX(90deg) translateZ(150px);
+		}
+		.down{
+			transform: rotateX(-90deg) translateZ(150px);
+		}
+		.left{
+			transform: rotateY(-90deg) translateZ(150px);
+		}
+		.right{
+			transform: rotateY(90deg) translateZ(150px);
+		}
+		 @-webkit-keyframes run{
+                    from{
+                        transform:rotateX(-30deg) rotateY(-30deg);
+                    }
+                    to{
+                        transform:rotateX(180deg) rotateY(360deg);
+                    }
+
+                    /*0%{                        
+                         transform:rotateY(0deg);
+                    }
+                    50%{                        
+                        transform:rotateY(360deg);
+                    }
+                    100%{                        
+                        transform:rotateY(3600deg) ;
+                    }*/
+                }
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="front"></div>
+		<div class="behind"></div>
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="up"></div>
+		<div class="down"></div>
+	</div>
+	<script>
+	    // $('.box>div').each(function(index,item){
+	    // 	var arr = ['pink',"deeppink","yellow","greenyellow","blue","red"];
+	    // 	var ul = $('<ul></ul>');
+	    // 	for(var i=0;i<9;i++){
+	    // 		var li = $('<li></li>');
+	    // 		li.css('background-color',arr[index]);
+	    // 		ul.append(li);
+	    // 	}
+	    // 	$(item).append(ul);
+	    // })
+	    // var load = [];
+	    // for(var i=0;i<54;i++){
+	    // 	load[i] = parseInt(Math.random()*380);
+	    // }
+	    // $('li').each(function(index,item){
+	    // 	$(item).css({"left":load[index],"top":load[index]});
+	    // })
+	    // $('li').each(function(index,item){
+	    // 	$(item).animate({"left":0,"top":0},3000);
+	    // })
+	    var arr = ['pink',"deeppink","yellow","greenyellow","blue","red"];
+             //循环6个面,通过each函数给没个面添加颜色
+             $(".box>div").each(function(index,item){
+                //创建ul标签
+                var ul = $("<ul></ul>");
+                for(var i = 0;i<9;i++){
+                    var li = $("<li></li>");
+                    li.css("background",arr[index]);
+                    ul.append(li);
+                }
+                $(item).append(ul);
+                // $(item).css("background",arr[index])
+             })
+             var loader = [];
+             for(var i = 0;i<54;i++){
+                loader.push(parseInt(Math.random()*480))
+             }
+             $("li").each(function(index,item){
+                $(item).css({"top":loader[index],"left":loader[index]})
+             })
+             // $("li").each(function(index,item){
+             //    $(item).animate({"left":0,"top":0},3000)
+             // })
+             $("li").each(function(index,item){
+                $(item).animate({"left":loader[index],"top":loader[index]},3000)
+             })
+             $("li").each(function(index,item){
+                $(item).animate({"left":0,"top":0},3000)
+             })
+	</script>
+</body>
+</html>
