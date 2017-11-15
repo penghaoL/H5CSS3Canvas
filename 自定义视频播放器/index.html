@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>video</title>
+	<link rel="stylesheet" href="css/font-awesome.css"/>
+	<script src='js/jquery.min.js'></script>
+	<style>
+		figcaption{
+			text-align: center;
+			font-size:30px;
+			font-weight:500;
+			font-style:italic;
+		}
+		.player{
+			margin:0 auto;
+			width: 720px;
+			height: 360px;
+			position: relative;
+			background-color: #000;
+			border-radius: 5px;
+			background:#000 url(images/loading.gif) no-repeat center/300px;
+			/*background-size:720px 360px;*/
+		}
+		.player video{
+			width: 720px;
+			height: 360px;
+			object-fit: contain;
+			display: none;
+		}
+		.box{
+			position: absolute;
+			width: 95%;
+			height: 45px;
+			background-color: rgba(255,255,255,0.2);
+			bottom:5px;
+			left:50%;
+			transform: translateX(-50%);
+			border-radius:5px;
+			z-index:10000000000000000000;
+		}
+		.screen a{
+			text-decoration: none;
+			font-size:20px;
+			color:#fff;
+			line-height: 45px;
+			display: block;
+			float: right;
+			margin-right:10px;
+		}
+		.paly a{
+			text-decoration: none;
+			font-size:20px;
+			color:#fff;
+			line-height: 45px;
+			display: block;
+			margin-left:20px;
+			float: left;
+		}
+		.line{
+			width: 65%;
+			height: 8px;	
+			background-color: #aaa;
+			float: left;
+			border-radius:4px;
+			margin-top:20px;
+			margin-left:10px;
+			position: relative;
+			cursor:pointer;
+		}
+		.online{
+			position: absolute;
+			height: 8px;	
+			background-color: #fff;
+			left:0;
+			top:0;
+			border-radius:4px;
+		}
+		.time span{
+			float: left;
+			line-height: 45px;
+			color:#fff;
+			font-size:14px;
+			margin-left:2%;
+		}
+		video::-webkit-media-controls{
+			display: none!important;
+		}
+	</style>
+</head>
+<body>
+	<figcaption>视频播放器</figcaption>
+	<div class="player">
+		<video src="video/fun.mp4"></video>
+		<div class="box">
+			 <div class="paly">
+			 	<a href='javascript:;' class='switch fa fa-play'></a>
+			 </div>
+			 <div class="line">
+			 	<div class="online"></div>
+			 </div>
+			 <div class="time">
+			 	<span>00/00/00</span>
+			 	<span>00/00/00</span>
+			 </div>
+			 <div class="screen">
+			 	<a href="javascript:;" class="expand fa fa-arrows-alt"></a>
+			 </div>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			function formatTime(time){
+				var h = Math.floor(time/3600);
+				var m = Math.floor(time%3600/60);
+				var s = Math.floor(time%60);
+				return (h<10? '0'+h : h)+':'+(m<10? '0'+m : m)+':'+(s<10? '0'+s : s);
+			}
+			//加载视频
+			$('video')[0].oncanplay = function(){
+				$(this).show();
+				var timerStr = formatTime($("video")[0].duration);
+				$('.time span').eq(1).html('/'+timerStr);
+			}
+		    // 实现播放暂停功能
+			$('.paly').on('click',function(){
+				if($('.switch').hasClass('fa-play')){
+					$('video')[0].play();	
+					$('.switch').removeClass('fa-play').addClass('fa-pause');
+				}else{
+					$('video')[0].pause();	
+					$('.switch').removeClass('fa-pause').addClass('fa-play');
+				}
+				
+			})
+			//全屏播放
+			$('.expand').on('click',function(){
+				if($(this).hasClass('fa-arrows-alt')){
+                $("video")[0].webkitRequestFullScreen();
+                $(this).removeClass('fa-arrows-alt').addClass('fa-compress');
+            }else{
+                document.webkitCancelFullScreen();
+                $(this).addClass('fa-arrows-alt').removeClass('fa-compress');
+            }
+			})
+			//进度条
+			$('video')[0].ontimeupdate = function(){
+				var p = $('video')[0].currentTime/$('video')[0].duration*100+'%';
+				$('.online').css('width',p);
+				var timerStr = formatTime($("video")[0].currentTime);
+				$('.time span').eq(0).html(timerStr);
+			}
+			//跃进功能
+			$('.line').on('click',function(e){
+					var p = e.offsetX/$('.line').width();
+					var goTime = p * $('video')[0].duration;
+					$('video')[0].currentTime = goTime;
+			})
+			//视频重置功能
+			$('video')[0].onended = function(){
+				$('video')[0].currentTime = 0;
+				$('.switch').removeClass('fa-pause').addClass('fa-play');
+			}
+		})
+	</script>
+</body>
+</html>
