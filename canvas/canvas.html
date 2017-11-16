@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas</title>
+	<style>
+		canvas{
+			border:1px solid #aaa;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="600px" height="400px">
+		
+	</canvas>
+	<script>
+		// 获取元素
+		var canvas = document.querySelector('canvas');
+		// 获取上下文 绘制工具
+		var ctx = canvas.getContext('2d');
+
+    	// 绘制路径
+		ctx.moveTo(100,100.5);
+
+		ctx.lineTo(300,100.5);
+
+		ctx.strokeStyle = 'yellow';
+		ctx.lineWidth = 2;
+		ctx.stroke();
+
+		ctx.beginPath();
+
+		ctx.moveTo(100,200.5);
+
+		ctx.lineTo(300,200.5);
+
+		ctx.strokeStyle = 'red';
+		ctx.lineWidth = 4;
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.moveTo(100,300.5);
+
+		ctx.lineTo(300,300.5);
+
+		// 描边路径
+		// 
+		ctx.strokeStyle = 'blue';
+		ctx.lineWidth = 6;
+		ctx.stroke();
+
+	</script>
+</body>
+</html>

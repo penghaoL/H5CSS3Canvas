@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border:1px solid #aaa;
+			margin:0 auto;
+		}
+	</style>
+</head>
+<body>
+	<canvas width='600px' height='400px'></canvas>
+	<script>
+	   var canvas = document.querySelector('canvas');
+		
+	   var ctx = canvas.getContext('2d');
+
+	   var grid = 10;
+
+	   var canvasWidth = ctx.canvas.width;
+
+	   var canvasHeight = ctx.canvas.height;
+
+	   var xlineTal = Math.floor(canvasHeight/grid);
+
+	   var ylineTal = Math.floor(canvasWidth/grid);
+
+	   for(var i=0;i<=xlineTal;i++){
+	   	 ctx.beginPath();
+	   	 ctx.moveTo(0,i*grid-0.5);
+	   	 ctx.lineTo(canvasWidth,i*grid-0.5);
+	   	 ctx.strokeStyle = '#eee';
+	   	 ctx.stroke();
+	   }
+	   for(var i=0;i<=ylineTal;i++){
+	   	 ctx.beginPath();
+	   	 ctx.moveTo(i*grid-0.5,0);
+	   	 ctx.lineTo(i*grid-0.5,canvasHeight);
+	   	 ctx.strokeStyle = '#eee';
+	   	 ctx.stroke();
+	   }
+
+   	   console.log(canvasHeight);	
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas</title>
+	<style>
+		canvas{
+			border:1px solid #aaa;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="600px" height="500px">
+		
+	</canvas>
+	<script>
+		// 获取元素
+		var canvas = document.querySelector('canvas');
+		// 获取上下文 绘制工具
+		var ctx = canvas.getContext('2d');
+
+    	//绘制两个正方形套在一起
+
+    	ctx.moveTo(100,100);
+    	ctx.lineTo(400,100);
+    	ctx.lineTo(400,400);
+    	ctx.lineTo(100,400);
+    	ctx.closePath();
+    	ctx.lineWidth = 2;
+    	ctx.strokeStyle = '#aaa';
+    	ctx.stroke();
+    	// ctx.beginPath();
+    	ctx.moveTo(150,150);
+    	ctx.lineTo(150,350);
+    	ctx.lineTo(350,350);
+    	ctx.lineTo(350,150);
+
+    	ctx.closePath();
+    	ctx.lineWidth = 2;
+    	ctx.fillStyle = '#eee';
+    	ctx.fill();
+    	// ctx.stroke();
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas</title>
+	<style>
+		canvas{
+			border:1px solid #aaa;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="600px" height="400px">
+		
+	</canvas>
+	<script>
+		// 获取元素
+		var canvas = document.querySelector('canvas');
+		// 获取上下文 绘制工具
+		var ctx = canvas.getContext('2d');
+
+    	// 绘制三角形
+    	ctx.moveTo(100,100);
+
+    	ctx.lineTo(200,100);
+
+    	ctx.lineTo(200,200);
+
+    	//lineTo和moveTo会缺一个角，无法自动闭合
+    	//使用自动闭合轨迹
+    	//ctx.lineTo(100,100);
+    	ctx.closePath();
+    	
+    	ctx.lineWidth = 10;
+    	ctx.stroke();
+	</script>
+</body>
+</html>

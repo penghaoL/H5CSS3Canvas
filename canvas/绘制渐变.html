@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas</title>
+	<style>
+		canvas{
+			border:1px solid #aaa;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="600px" height="500px">
+		
+	</canvas>
+	<script>
+		// 获取元素
+		var canvas = document.querySelector('canvas');
+		// 获取上下文 绘制工具
+		var ctx = canvas.getContext('2d');
+
+    	// ctx.lineWidth = 30;
+    	// for(var i=0;i<255;i++){
+    	// 	ctx.beginPath();
+    	// 	ctx.moveTo(100+i,100);
+    	// 	ctx.lineTo(100+i+1,100);
+    	// 	ctx.strokeStyle = 'rgb('+i+','+i+','+i+')';
+    	// 	ctx.stroke();
+    	// }
+    	ctx.lineWidth = 40;
+    	for(var i =0;i<255;i++){
+    		ctx.beginPath();
+    		ctx.moveTo(100+i,100);
+    		ctx.lineTo(100+i+1,100);
+    		ctx.strokeStyle = 'rgb('+i+','+i+','+i+')';
+    		ctx.stroke();
+    	}
+
+	</script>
+</body>
+</html>
