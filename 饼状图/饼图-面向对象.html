@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border:1px solid #aaa;
+			display: block;
+			margin:100px auto;
+		}
+	</style>
+</head>
+<body>
+	<canvas width='600px' height='400px'></canvas>
+	<script>
+		var canvasm = document.querySelector('canvas');
+		var ctx = canvasm.getContext('2d');
+		//绘制饼状图完整版
+		//绘制饼图
+		//绘制标题
+		function PieChart(ctx){
+			this.ctx = ctx || document.querySelector('canvas').getContext('2d');
+			//饼图中心
+			this.w = this.ctx.canvas.width;
+			this.h = this.ctx.canvas.height;
+			this.x0 = this.w/2+60;
+			this.y0 = this.h/2;
+			this.r = 150;
+			this.radius = 150;
+			this.outLine = 20;
+			this.rectW = 30;
+			this.rectH = 16;
+			this.space = 20;
+		}
+		PieChart.prototype.init = function(data){
+			//准备数据
+			this.drawPei(data);
+		}
+		PieChart.prototype.drawPei = function(data){
+			var that = this;
+			var angleList = this.transformAngle(data);
+			var star = 0;
+			angleList.forEach(function(item,i){
+				var end = star + item.angle;
+				that.ctx.beginPath();
+				that.ctx.moveTo(that.x0,that.y0);
+				that.ctx.arc(that.x0,that.y0,that.r,star,end);
+				var color = 'rgb( '+Math.floor(Math.random()*255)+' , '+Math.floor(Math.random()*255)+' , '+Math.floor(Math.random()*255)+')';
+				that.ctx.fillStyle = color;
+				that.ctx.fill();
+				that.drawTitle(star,item.angle,color,item.title);
+				that.drawDesc(i,item.title);
+				star = end;
+			})
+		}
+		PieChart.prototype.drawTitle = function(star,angle,color,title){
+			var edge = this.radius + this.outLine;
+			var edgeX = Math.cos(star + angle/2) * edge;
+			var edgeY = Math.sin(star + angle/2) * edge;
+			var outX = this.x0 + edgeX;
+			var outY = this.y0 + edgeY;
+			this.ctx.beginPath();
+			this.ctx.strokeStyle = color;
+			this.ctx.moveTo(this.x0,this.y0);
+			this.ctx.lineTo(outX,outY);
+			// if(){}
+			this.ctx.font = '14px Microsoft YaHei';
+			var textW = this.ctx.measureText(title).width;
+			if(outX > this.x0){
+				this.ctx.lineTo(outX+textW,outY);
+				this.ctx.textAlign = 'left';
+			}else{
+				this.ctx.lineTo(outX-textW,outY);
+				this.ctx.textAlign = 'right';
+			}
+			this.ctx.stroke();
+			this.ctx.textBaseline = 'bottom';
+			this.ctx.fillText(title,outX,outY);
+			console.log(textW);
+
+		}
+		PieChart.prototype.drawDesc = function(index,title){
+			this.ctx.fillRect(this.space,this.space+index*(this.rectH+7),this.rectW,this.rectH);
+			this.ctx.beginPath();
+			this.ctx.textAlign = 'left';
+			this.ctx.textBaseline = 'top';
+			this.ctx.font = '12px Microsoft YaHei';
+			this.ctx.fillText(title,this.space+this.rectW+20,this.space+index*(this.rectH+7));
+		}
+		//转化弧度
+		PieChart.prototype.transformAngle = function(data){
+			//返回包含弧度的数据
+			//转化弧度 并追加到对象
+			var total = 0;
+			data.forEach(function(item,i){
+				total += item.num;
+			})
+			data.forEach(function(item,i){
+				var angle = item.num/total * Math.PI * 2 ;
+				item.angle = angle;
+			})
+			return data;
+
+		}
+		// PieChart.prototype.
+		var data = [
+			{title:'15-20岁',num:6},
+			{title:'20-25岁',num:30},
+			{title:'25-30岁',num:10},
+			{title:'30岁以上',num:8}
+		];
+		var pieChart = new PieChart();
+		pieChart.init(data);
+	</script>
+</body>
+</html>

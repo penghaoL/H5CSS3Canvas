@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border:1px solid #aaa;
+		}
+	</style>
+</head>
+<body>
+	<canvas width='600px' height='400px'></canvas>
+	<script>
+		var canvasm = document.querySelector('canvas');
+		var ctx = canvasm.getContext('2d');
+		// setInterval(function(){
+			var num = 3600;
+		var angle = Math.PI*2/num;
+		var star = 0;
+		var x0 = 200;
+		var y0 = 200;
+		for(var i=0;i<num;i++){
+			var star = i*angle;
+			var end = (i+1)*angle;
+			var color = 'rgb( '+Math.floor(Math.random()*255)+' , '+Math.floor(Math.random()*255)+' , '+Math.floor(Math.random()*255)+')';
+			ctx.beginPath();
+			ctx.moveTo(x0,y0);
+			ctx.arc(x0,y0,150,star,end);
+			ctx.fillStyle = color;
+			ctx.fill();
+		}
+		
+		// },1)
+
+	</script>
+</body>
+</html>

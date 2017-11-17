@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border:1px solid #aaa;
+		}
+	</style>
+</head>
+<body>
+	<canvas width='600px' height='400px'></canvas>
+	<script>
+		var canvasm = document.querySelector('canvas');
+		var ctx = canvasm.getContext('2d');
+		for(var i=0;i<600;i++){
+			var x = i;
+			var y =50*Math.sin(x/10)+100;
+			ctx.lineTo(x,y);
+
+		}
+		ctx.stroke();
+	</script>
+</body>
+</html>

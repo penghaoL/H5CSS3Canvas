@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border:1px solid #aaa;
+		}
+	</style>
+</head>
+<body>
+	<canvas width='600px' height='400px'></canvas>
+	<script>
+		var canvasm = document.querySelector('canvas');
+		var ctx = canvasm.getContext('2d');
+		//在画布中心绘制文字
+		var str = '吃了吗';
+		var x = ctx.canvas.width;
+		var y = ctx.canvas.height;
+		var x0 = x/2;
+		var y0 = y/2;
+		ctx.moveTo(0,y0+0.5);
+		ctx.lineTo(x,y0+0.5);
+		ctx.moveTo(x0+0.5,0);
+		ctx.lineTo(x0+0.5,y);
+		ctx.stroke();
+		ctx.font = '40px 微软雅黑';
+		ctx.textAlign = 'center';
+		ctx.textBaseline = 'middle';
+		ctx.fillText(str,x0,y0);
+		var width = ctx.measureText(str).width;
+		ctx.beginPath();
+		ctx.moveTo(x0-width/2,y0+20);
+		ctx.lineTo(x0+width/2,y0+20);
+		ctx.stroke();
+
+	</script>
+</body>
+</html>

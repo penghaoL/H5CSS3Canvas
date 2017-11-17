@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border:1px solid #aaa;
+		}
+	</style>
+</head>
+<body>
+	<!-- <img src="images/1.jpg" alt=""> -->
+	<canvas width='600px' height='400px'></canvas>
+	<script>
+		var canvasm = document.querySelector('canvas');
+		var ctx = canvasm.getContext('2d');
+		
+		// var img = document.createElement('img');
+
+		// img.src = 'images/1.jpg';
+		//创建对象
+		var image = new Image();
+		//绑定加载完成事件
+		image.onload = function(){
+			console.log(image);
+			var imageW = image.width;
+			var imageH = image.height;
+			var personW = imageW/4;
+			var personH = imageH/4;
+			var index = 0;
+			var x0 = ctx.canvas.width/2 - personW/2;
+			var y0 = ctx.canvas.height/2 - personH/2;
+			// ctx.drawImage(image,100,100);
+			// ctx.drawImage(image,100,100,200,200);
+			setInterval(function(){
+				index++
+				if(index>4){
+					index = 0;
+				}
+				ctx.drawImage(image,index*personW,0,personW,personH,x0,y0,personW,personH);
+
+			},200)
+			
+		}
+		//添加图片路径
+		image.src = 'images/04.png';		
+	</script>
+</body>
+</html>

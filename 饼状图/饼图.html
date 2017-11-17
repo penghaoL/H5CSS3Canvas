@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border:1px solid #aaa;
+		}
+	</style>
+</head>
+<body>
+	<canvas width='600px' height='400px'></canvas>
+	<script>
+		var canvasm = document.querySelector('canvas');
+		var ctx = canvasm.getContext('2d');
+		//数据
+		var data = [5,30,10,5];
+		var total = 0;
+		for(var i =0;i<data.length;i++){
+			total += data[i];
+		}
+		// console.log(total);
+		//转化为弧度
+		var angleList = [];
+		data.forEach(function(item,i){
+			var angle = Math.PI * 2 * (item/total);
+			angleList . push(angle);
+		});
+		console.log(angleList);
+		var star = 0;
+		var x = 200;
+		var y = 200;
+		angleList.forEach(function(item,i){
+			var color = 'rgb( '+Math.floor(Math.random()*255)+' , '+Math.floor(Math.random()*255)+' , '+Math.floor(Math.random()*255)+')';
+			var end = star + item;
+			ctx.beginPath();
+			ctx.moveTo(x,y);
+			ctx.arc(x,y,150,star,end);
+			ctx.fillStyle = color;
+			ctx.fill();
+			star = end;
+		})
+
+	</script>
+</body>
+</html>
