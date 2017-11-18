@@ -1,0 +1,252 @@
+.jd_layout{
+	max-width: 640px;
+	min-width: 320px;
+	width:100%;
+	margin:0 auto;
+}
+.jd_search {
+	position: fixed;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 40px;
+	z-index:9999;
+}
+.jd_search .jd_search_box{
+	width: 100%;
+	height: 40px;
+	position: relative;
+	min-width: 320px;
+	max-width: 640px;
+	margin:0 auto;
+	background-color: rgba(201,21,35,0.85);
+	
+}
+.jd_search .jd_search_box .logo{
+	display: block;
+	width: 56px;
+	height: 30px;
+	position: absolute;
+	top:10px;
+	left:5px;
+	background:url(../images/sprites.png) no-repeat 0 -110px / 200px 200px;
+}
+.jd_search .jd_search_box .login{
+	display: block;
+	width: 40px;
+	height: 40px;
+	color:#fff;
+	line-height: 40px;
+	position: absolute;
+	right:0;
+	/*font-size:15px;*/
+}
+.jd_search .jd_search_box form {
+	width: 100%;
+	height: 40px;
+	/*background-color: pink;*/
+	padding:0 45px 0 65px;
+	position: relative;
+}
+.jd_search .jd_search_box form input{
+	width: 100%;
+	border:0;
+	height: 30px;
+	border-radius: 15px;
+	margin-top: 5px;
+	outline: none;
+	padding-left:30px;
+}
+.jd_search .jd_search_box form span {
+	display: block;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	background: url(../images/sprites.png) no-repeat -60px -110px / 200px 200px;
+	top:11px;
+	left:70px;
+}
+.jd_banner{
+	overflow: hidden;
+	position: relative;
+}
+.jd_banner ul:first-child {
+	width: 1000%;
+	transform: translateX(-10%);
+}
+.jd_banner ul:first-child li{
+  width: 10%;
+  float: left;
+}
+.jd_banner ul:first-child li a{
+	display: block;
+	width: 100%;
+}
+.jd_banner ul:first-child li a img{
+	width: 100%;
+	display: block;
+}
+.jd_banner ul:last-child{
+	height: 6px;
+	position: absolute;
+	bottom:6px;
+	left:50%;
+	transform: translateX(-50%);
+}
+.jd_banner ul:last-child li{
+	width: 6px;
+	height: 6px;
+	/*background-color: #fff;*/
+	border:1px solid #fff;
+	border-radius:3px;
+	float: left;
+	margin:0 5px;
+}
+.jd_banner ul:last-child li:first-child{
+	background-color: #fff;
+}
+.jd_nav ul{
+	width: 100%;
+	padding:20px 0;
+	background-color: #fff;
+	border-bottom:1px solid #ddd;
+}
+.jd_nav ul li{
+	float: left;
+	width: 25%;
+	text-align: center;
+}
+.jd_nav ul li a{
+	display: block;
+	width: 100%;
+}
+.jd_nav ul li a img{
+	width: 40px;
+}
+.jd_nav ul li p{
+	padding: 5px 0;
+}
+.jd_product{
+	width: 100%;
+	padding:0 10px;
+	min-height: 100px;
+}
+.jd_product .jd_pro_sk{
+	width: 100%;
+	min-height: 200px;
+	margin-top:10px;
+	background-color: #fff;
+	box-shadow: 0 0 1px #ccc;
+}
+.jd_product .jd_pro_sk .title{
+	height: 35px;
+	/*background-color: pink;*/
+	overflow: hidden;
+}
+.jd_product .jd_pro_sk .title .skill{
+	display: block;
+	width: 16px;
+	height: 20px;
+	background-color: #000;
+	background:url(../images/seckill-icon.png) no-repeat center center /16px 20px;
+    margin-left:10px;
+    margin-top:8px;
+    float: left;	
+}
+.jd_product .jd_pro_sk .title .zhang{
+	float: left;
+	color:rgba(201,21,35,0.85);
+	line-height:35px;
+	margin-left:10px;
+}
+.jd_product .jd_pro_sk .title .more{
+	float: right;
+	line-height: 35px;
+	padding-right:10px;
+}
+.jd_product .jd_pro_sk .title ul {
+	margin-left:10px;
+	float: left;
+}
+.jd_product .jd_pro_sk .title ul li{
+	float: left;
+	line-height: 16px;
+	width: 16px;
+	height: 16px;
+	text-align: center;
+	background-color: #000;
+	margin-top: 8px;
+	color:#fff;
+	margin-left:3px;
+}
+.jd_product .jd_pro_sk .title ul li:nth-child(3n){
+	width: 3px;
+	background-color: #fff;
+	color:#000;
+}
+.jd_product .jd_pro_sk .concent ul{
+	width: 100%;
+	margin-top:20px;
+	overflow: hidden;
+}
+.jd_product .jd_pro_sk .concent ul li{
+	width: 33.3%;
+	float: left;
+	text-align: center;
+}
+.jd_product .jd_pro_sk .concent ul li a{
+	display: block;
+	width: 100%;
+	border-right:1px solid #ccc;
+}
+.jd_product .jd_pro_sk .concent ul li:last-child a{
+	border-right:0;
+}
+.jd_product .jd_pro_sk .concent ul li a img{
+	display: block;
+	width: 66%;
+	margin:0 auto;
+}
+.jd_product .jd_pro_sk .concent ul li p{
+	color:rgba(201,21,35,0.85);
+	font-size:12px;
+}
+.jd_product .jd_pro_sk .concent ul li p:last-child{
+	color:#666;
+	text-decoration:line-through;
+}
+.jd_pro_box {
+	width: 100%;
+	min-height:200px;
+	background-color: #fff;
+	margin-top:10px;
+	box-shadow: 0 0 1px #ccc;
+}
+.jd_pro_box .title {
+	height: 35px;
+	border-bottom: 1px solid #ccc;
+}
+.jd_pro_box .title .tit{
+	margin-left:10px;
+	padding-left:15px;
+	line-height: 35px;
+	font-size: 15px;
+	border-left:3px solid rgba(201,21,35,0.85);
+}
+/*组合样式*/
+.b_right{
+	border-right:1px solid #ddd;
+}
+.b_left{
+	border-left:1px solid #ddd;
+}
+.b_bottom{
+	border-bottom:1px solid #ddd;
+}
+.w_50{
+	width: 50%;
+}
+.w_50 img{
+	display: block;
+	width: 100%;
+}

@@ -1,0 +1,55 @@
+/*=============== reset css ===================*/
+*{
+	margin:0;
+	padding:0;
+	/*统一元素的尺寸计算方式*/	
+	box-size:border-box;
+	-webkit-box-sizing:border-box;
+	-webkit-tap-highlight-color:transparent;
+}
+body{
+	font-size:14px;
+	color:#333;
+	background-color: #f5f5f5;
+}
+a{
+	text-decoration: none;
+	color:#333;
+}
+ul{
+	list-style: none;
+}
+input[type='text'],text[type='password'],text[type='search'],textarea{
+	border:none;
+	outline: none;
+	resize:none;
+	-webkit-appearance:none;
+}
+/*============== common css ==============*/
+.clearfix::before,
+.clearfix::after{
+    content: "";
+    display: block;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+    clear: both;
+}
+.f_left{
+	float: left;
+}
+.f_right{
+	float: right;
+}
+.mr10{
+	margin-right: 10px;
+}
+.ml10{
+	margin-left: 10px;
+}
+.mt10{
+	margin-top: 10px;
+}
+.mb10{
+	margin-bottom: 10px;
+}
