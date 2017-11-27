@@ -1,0 +1,18 @@
+@charset "utf-8";
+.sn_nav {
+  width: 100%;
+}
+.sn_nav ul {
+  width: 100%;
+}
+.sn_nav ul li {
+  width: 20%;
+  float: left;
+  text-align: center;
+}
+.sn_nav ul li a {
+  display: block;
+}
+.sn_nav ul li a img {
+  display: block;
+}

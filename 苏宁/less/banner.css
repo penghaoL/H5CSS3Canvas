@@ -1,0 +1,18 @@
+@charset "utf-8";
+.banner {
+  width: 100%;
+  overflow: hidden;
+}
+.banner ul {
+  width: 1000%;
+}
+.banner ul li {
+  float: left;
+  width: 10%;
+}
+.banner ul li a {
+  display: block;
+}
+.banner ul li a img {
+  width: 100%;
+}

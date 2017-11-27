@@ -1,0 +1,11 @@
+@charset "utf-8";
+.sn_container {
+  width: 100%;
+  min-width: 320px;
+  max-width: 750px;
+  margin: 0 auto;
+  background-color: red;
+}
+.sn_container .sn_topbar {
+  height: 90;
+}

@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+
+
+.screenList(@index) when (@index <= @len){
+  @media (min-width: extract(@screenList,@index)){
+    html{
+      font-size: extract(@screenList,@index)/@psdSize*@baseFontsize;
+    }
+  }
+  .screenList(@index + 1);
+}
